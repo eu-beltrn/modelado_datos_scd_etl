@@ -27,7 +27,7 @@ USE scd_db;
 
 -- HISTORIAL DEPARTAMENTOS -JONATHAN
 
---- HISTORIAL SALARIOS - EUNICE
+-- HISTORIAL SALARIOS - EUNICE
 
 -- VERIFICACIÓN:
 -- - Validar que la base de datos fue creada correctamente
