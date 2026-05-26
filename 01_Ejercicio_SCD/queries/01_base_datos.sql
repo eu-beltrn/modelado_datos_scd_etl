@@ -89,7 +89,10 @@ CREATE TABLE historial_salarios (
     nombre_empleado VARCHAR(100),
     salario_anterior DECIMAL(10,2),
     salario_actual DECIMAL(10,2),
-    fecha_cambio DATE
+    fecha_cambio DATE,
+
+    FOREIGN KEY (id_empleado)
+    REFERENCES dim_empleados(id_empleado)
 );
 
 -- Inserts de 5 Registros
