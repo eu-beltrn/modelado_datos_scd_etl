@@ -6,19 +6,61 @@
 -- RESPONSABLE: Jonathan
 
 -- PROPÓSITO:
--- Mantener historial completo de cambios en los datos.
+-- Mantener historial completo de cambios en los departamentos
+-- de los empleados utilizando SCD Tipo 2.
 
 -- PROCESO GENERAL:
 -- - Cerrar registros anteriores
 -- - Insertar nuevos registros históricos
 -- - Mantener trazabilidad completa
+-- - Conservar historial de departamentos
 
--- CONTENIDO A IMPLEMENTAR:
--- - UPDATE para cerrar registros activos
--- - INSERT para nuevos estados históricos
--- - Manejo de fechas de vigencia
--- - Control de registros activos/inactivos
+-- =========================================================
+-- UPDATE DE REGISTRO ANTERIOR
+-- =========================================================
+-- Cerrar registro activo anterior del empleado
 
--- VERIFICACIÓN:
--- - Consultar historial completo
--- - Validar múltiples registros por entidad
+-- Seleccionar bd
+use scd_db;
+UPDATE historial_departamentos
+SET fecha_fin = CURRENT_DATE,
+    activo = FALSE
+WHERE id_empleado = 1
+AND activo = TRUE;
+
+-- =========================================================
+-- INSERT DE NUEVO REGISTRO HISTÓRICO
+-- =========================================================
+-- Insertar nuevo departamento del empleado
+
+INSERT INTO historial_departamentos (
+    id_empleado,
+    departamento,
+    fecha_inicio,
+    fecha_fin,
+    activo
+)
+VALUES (
+    1,
+    'IT',
+    CURRENT_DATE,
+    NULL,
+    TRUE
+);
+
+-- =========================================================
+-- CONSULTA DE VERIFICACIÓN HISTÓRICA
+-- =========================================================
+-- Mostrar historial completo del empleado
+
+SELECT *
+FROM historial_departamentos
+WHERE id_empleado = 1;
+
+-- =========================================================
+-- RESULTADO ESPERADO:
+-- - El registro anterior debe quedar inactivo
+-- - El nuevo registro debe quedar activo
+-- - Deben existir múltiples registros históricos
+-- - Se debe conservar la trazabilidad de cambios
+-- =========================================================        
