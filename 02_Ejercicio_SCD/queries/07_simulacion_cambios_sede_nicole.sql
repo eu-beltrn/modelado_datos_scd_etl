@@ -1,22 +1,14 @@
--- =========================================================
--- TÍTULO DEL NOTEBOOK:
--- 8. Simulación de Cambios Organizacionales — Nicole
--- (Cambios de Sede)
--- =========================================================
+-- ============================================================================
+-- 8. Implementación SCD Tipo 1 (Cambio de Departamento) — Nicole
+-- ============================================================================
+USE scd_db;
 
--- RESPONSABLE: Nicole
+-- 1. Aplicamos el cambio directo sobre el registro de Ana López
+UPDATE dim_empleados
+SET departamento = 'Operaciones'
+WHERE id_empleado = 2;
 
--- PROPÓSITO:
--- Simular cambios de sede utilizando sobrescritura.
-
--- PROCESO GENERAL:
--- - Modificar datos existentes
--- - Aplicar comportamiento SCD Tipo 1
--- - No conservar historial
-
--- CONTENIDO A IMPLEMENTAR:
--- - UPDATE de sede o ubicación
--- - Sobrescritura directa de datos
-
--- VERIFICACIÓN:
--- - Consultar datos actualizados
+-- 2. Consulta de verificación inmediata para validar el cambio realizado
+SELECT id_empleado, nombre_empleado, departamento, sede 
+FROM dim_empleados 
+WHERE id_empleado = 2;

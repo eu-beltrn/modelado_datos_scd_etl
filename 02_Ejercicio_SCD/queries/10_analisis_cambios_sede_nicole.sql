@@ -1,22 +1,13 @@
--- =========================================================
--- TÍTULO DEL NOTEBOOK:
--- 9. Análisis de Resultados — Nicole
--- (Cambios Organizacionales)
--- =========================================================
+-- ============================================================================
+-- 9. Simulación de Cambios de Sede Organizacionales — Nicole (SCD Tipo 1)
+-- ============================================================================
+USE scd_db;
 
--- RESPONSABLE: Nicole
+-- 1. Actualizamos la sede directa en el registro de Juan Pérez
+UPDATE dim_empleados
+SET sede = 'San Miguel'
+WHERE id_empleado = 1;
 
--- PROPÓSITO:
--- Analizar cambios de sede y comportamiento de sobrescritura.
-
--- PROCESO GENERAL:
--- - Consultar datos actuales
--- - Evaluar impacto de sobrescritura
--- - Identificar pérdida de historial
-
--- CONTENIDO A IMPLEMENTAR:
--- - Consultas SELECT de validación
--- - Análisis de cambios actuales
-
--- VERIFICACIÓN:
--- - Visualización de estado final de datos
+-- 2. Consulta de auditoría general para verificar el estado final de toda la tabla
+SELECT id_empleado, nombre_empleado, departamento, sede 
+FROM dim_empleados;

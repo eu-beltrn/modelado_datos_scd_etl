@@ -20,3 +20,9 @@
 -- VERIFICACIÓN:
 -- - Consultar tabla completa
 -- - Validar cambios realizados
+
+USE scd_db;
+
+-- Validamos que los 5 empleados oficiales existan en la tabla original
+SELECT id_empleado, nombre_empleado, departamento, sede 
+FROM dim_empleados;

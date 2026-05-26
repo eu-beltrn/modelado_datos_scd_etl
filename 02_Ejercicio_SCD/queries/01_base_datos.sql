@@ -28,27 +28,27 @@ USE scd_db;
 -- DIMENSION EMPLEADOS - NICOLE
 -- SCD tipo 1
 
--- creación de la tabla
-CREATE TABLE dim_empleados (
+-- Creacion de tabla
+CREATE TABLE IF NOT EXISTS dim_empleados (
     id_empleado INT PRIMARY KEY,
     nombre_empleado VARCHAR(100),
     departamento VARCHAR(100),
     sede VARCHAR(100)
 );
 
--- Inserts de 5 Registros de empleados
-INSERT INTO dim_empleados (
-    id_empleado,
-    nombre_empleado,
-    departamento,
-    sede
-)
+-- Inserción de los 5 registros iniciales 
+INSERT INTO dim_empleados (id_empleado, nombre_empleado, departamento, sede)
 VALUES
 (1, 'Juan Pérez', 'Ventas', 'San Salvador'),
 (2, 'Ana López', 'Recursos Humanos', 'Santa Ana'),
 (3, 'Luis Martínez', 'Finanzas', 'Sonsonate'),
 (4, 'María Gómez', 'Marketing', 'La Libertad'),
-(5, 'Carlos Rivera', 'IT', 'San Miguel');
+(5, 'Carlos Rivera', 'IT', 'San Miguel')
+ON DUPLICATE KEY UPDATE id_empleado = id_empleado;
+
+-- Muestra los datos en pantalla al ejecutar el archivo general
+SELECT * FROM dim_empleados;
+
 
 -- HISTORIAL DEPARTAMENTOS -JONATHAN
 -- SCD tipo 2
