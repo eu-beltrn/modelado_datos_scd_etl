@@ -7,7 +7,7 @@ from sqlalchemy import create_engine, text
 
 # Configuración
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - INGESTION - %(levelname)s - %(message)s')
-DB_URI = os.getenv("DB_URI", "mysql+pymysql://root:@localhost:3306/enterprise_datawarehouse")
+DB_URI = os.getenv("DB_URI", "mysql+pymysql://root:root@localhost:3306/enterprise_datawarehouse")
 engine = create_engine(DB_URI)
 fake = Faker()
 
