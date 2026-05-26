@@ -20,3 +20,11 @@
 
 -- VERIFICACIÓN:
 -- - Visualización de evolución salarial
+
+SELECT 
+    nombre_empleado,
+    salario_anterior,
+    salario_actual,
+    (salario_actual - salario_anterior) AS aumento
+FROM historial_salarios
+WHERE salario_anterior IS NOT NULL;
